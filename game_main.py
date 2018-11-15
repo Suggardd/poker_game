@@ -1,18 +1,22 @@
 import random
 
+#List that has the card values from 2 to Ace
+c_values = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
+
+#List that has all different suits (Hearts, Diamonds, Spades and Clubs)
+colors = ['H', 'D', 'S', 'C']
+
 #Class for creating card objects
 class Card:
     def __init__(self, value, color):
         self.value = value
         self.color = color
     def __str__(self):
-        return "%s:%s" % (self.color, self.value)
+        return "%s%s" % (self.color, self.value)
 
-#Global variables
-colors = ['H', 'D', 'S', 'C']
 
 #Create a deck of cards from card objects
-deck = [Card(value, color) for value in range (1, 15) for color in colors]
+deck = [Card(value, color) for value in c_values for color in colors]
 
 #Hands for player 1 and 2
 hand1 = []
@@ -22,8 +26,6 @@ hand2 = []
 #Function to shuffle the deck
 def shuffle():
     random.shuffle(deck)
-
-
 
 
 #Function to deal first hands from the deck
@@ -36,6 +38,7 @@ def deal_hands():
         i += 1
 
 
+#Function to print hands players currently have
 def print_hands():
     temp_str = ""
     for i in hand1:
